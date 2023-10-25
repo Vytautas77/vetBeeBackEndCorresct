@@ -26,7 +26,7 @@ const GET_LOGS_BY_PET_ID = async (req, res) => {
     ON pets.id = logs.pet_id
     WHERE pets.id = '${req.params.id}'
 `);
-    if (logs.rows.length === 0) {
+    if (!logs.rows.length) {
       return res.status(404).json({ response: "Pet not found" });
     }
     return res.json({ logs: logs.rows });

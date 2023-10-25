@@ -28,7 +28,7 @@ FULL JOIN medications
 ON prescriptions.medication_id = medications.id
 WHERE pets.id = '${req.params.id}'
 `);
-    if (prescriptions.rows.length === 0) {
+    if (!prescriptions.rows.length) {
       return res.status(404).json({ response: "Pet not found" });
     }
     return res.json({ prescriptions: prescriptions.rows });
